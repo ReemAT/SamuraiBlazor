@@ -12,7 +12,7 @@ artifacts/
 .dotnet/
 *.binlog
 
-wwwroot/
+#wwwroot/
 
 # .NET Core
 project.lock.json
