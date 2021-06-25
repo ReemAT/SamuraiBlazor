@@ -9,5 +9,7 @@ namespace SamuraiBlazor.Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public IEnumerable<Quote> Quotes { get; set; }
+        public Horse Horse { get; set; }
     }
 }

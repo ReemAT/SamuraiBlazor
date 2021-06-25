@@ -1,0 +1,57 @@
+﻿@page "/samuraidetail/{id}"
+@using SamuraiBlazor.Domain
+@inject HttpClient Http
+@inject SamuraiService service
+
+<h3>SamuraiDetail</h3>
+@if (samurai == null)
+{
+    <p><em>Loading...</em></p>
+}
+else 
+{ 
+<div>
+    <div>
+        Name: @samurai.Name
+    </div>
+    @if (samurai.Horse != null)
+    {
+        <div>
+            Horse: @samurai.Horse.Name
+        </div>
+    }
+    @if (samurai.Quotes != null && samurai.Quotes.Any())
+    { 
+        <h2>Quotes: </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var quote in samurai.Quotes)
+                {
+                    <tr>
+                        <td>@quote.Id</td>
+                        <td>@quote.Text</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
+}
+
+@code {
+    [Parameter] public string Id { get; set; }
+    private Samurai samurai;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("I am in details: Id = " + Id);
+        samurai = await service.GetSamraiById(Convert.ToInt32(Id));
+    }
+}

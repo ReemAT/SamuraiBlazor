@@ -8,5 +8,6 @@ namespace SamuraiBlazor.Domain
     interface ISamuraiService
     {
         Task<IEnumerable<Samurai>> GetSamrai();
+        Task<Samurai> GetSamraiById(int id);
     }
 }

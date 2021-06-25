@@ -22,5 +22,9 @@ namespace SamuraiBlazor.Domain
         {
             return await httpClient.GetFromJsonAsync<Samurai[]>("api/samurai");
         }
+        public async Task<Samurai> GetSamraiById(int id)
+        {
+            return await httpClient.GetFromJsonAsync<Samurai>("api/samurai/"+ id);
+        }
     }
 }
